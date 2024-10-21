@@ -170,7 +170,7 @@ async function leerDia(spreadsheetId) {
     const getRow = await googleSheets.spreadsheets.values.get({
         auth: client,
         spreadsheetId,
-        range: "Principal!B6:E",
+        range: "Principal!B6:G",
     });
 
 
