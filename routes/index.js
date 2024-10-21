@@ -56,11 +56,11 @@ async function generarQR(param) {
 
     // Crear un degradado, ajustado al tamaño final del QR
     const gradient = ctx.createLinearGradient(100, 200, 100 + scaledQRSize, 200 + scaledQRSize); // Degradado ajustado al QR redimensionado
-    //gradient.addColorStop(0, '#2874a6');  // Color inicial (azul)
-    //gradient.addColorStop(1, '#85c1e9');  // Color final (rojo)
+    gradient.addColorStop(0, '#2874a6');  // Color inicial (azul)
+    gradient.addColorStop(1, '#85c1e9');  // Color final (rojo)
 
-    gradient.addColorStop(0, '#884ea0');  // Color inicial (azul)
-    gradient.addColorStop(1, '#d2b4de');  // Color final (rojo)
+    //gradient.addColorStop(0, '#884ea0');  // Color inicial (azul)
+    //gradient.addColorStop(1, '#d2b4de');  // Color final (rojo)
 
 
 
