@@ -50,7 +50,7 @@ async function generarQR(param) {
     //Salon
     const logo2 = await loadImage('./assets/image/salon.jpg'); // Cambia esto a la ruta de tu logo
     const logo2Size = 150; // Tamaño del logo
-    ctx.drawImage(logo2, (finalWidth / 2) - (logo2Size / 2)+450, 100 - (logo2Size / 2), logo2Size, logo2Size);
+    ctx.drawImage(logo2, (finalWidth / 2) - (logo2Size / 2)+470, 100 - (logo2Size / 2), logo2Size, logo2Size);
 
 
 
