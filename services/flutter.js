@@ -63,10 +63,20 @@ async function scanear(spreadsheetId, req) {
 
 
 async function verificar(spreadsheetId, params, type) {
+
+    console.log('----Verificacion----')
     const myVariable = process.env.PROYECTO;
-    const usuario = params[0] + '-' + myVariable
+    let usuario
+    if (type == 2) {
+        usuario = params[0] + '-' + myVariable
+    }else{
+        usuario = params[0]
+    }
 
 
+
+    console.log('usuario: ' + usuario)
+    console.log('tipo: ' + type)
     const client = await obtenerCliente();
     const googleSheets = google.sheets({ version: "v4", auth: client });
 
