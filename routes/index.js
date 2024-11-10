@@ -12,7 +12,7 @@ const spreadsheetId = "1_Bv8a4G1_F6fbYgv5R1ahsbw9yFArfNyU0vrixmRUvM";
 const QRCode = require('qrcode');
 const { createCanvas, loadImage } = require('canvas');
 async function generarQR(param) {
-    const myVariable = param + '-' + process.env.PROYECTO;
+    const myVariable = param ;
 
     const qrSize = 300; // Tamaño del QR original
     const finalWidth = 1200; // Ancho del canvas final

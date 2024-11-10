@@ -34,7 +34,7 @@ async function scanear(spreadsheetId, req) {
     for (const [index, element] of fila.entries()) {
         let ver
         if (type == 2) {
-            ver = element[0] + '-' + process.env.PROYECTO
+            ver = element[0]
         } else if (type == 1) {
             ver = element[0]
         }
@@ -65,11 +65,11 @@ async function scanear(spreadsheetId, req) {
 async function verificar(spreadsheetId, params, type) {
 
     console.log('----Verificacion----')
-    const myVariable = process.env.PROYECTO;
+
     let usuario
     if (type == 2) {
-        usuario = params[0] + '-' + myVariable
-    }else{
+        usuario = params[0]
+    } else {
         usuario = params[0]
     }
 
@@ -97,7 +97,7 @@ async function verificar(spreadsheetId, params, type) {
 
             let ver
             if (type == 2) {
-                ver = element[0] + '-' + process.env.PROYECTO
+                ver = element[0]
             } else if (type == 1) {
                 ver = element[0]
             }
@@ -170,7 +170,7 @@ function formatDate(date) {
 
 
 async function leerDia(spreadsheetId) {
-    const myVariable = process.env.PROYECTO;
+
 
 
     const client = await obtenerCliente();
