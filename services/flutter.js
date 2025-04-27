@@ -195,4 +195,68 @@ async function leerDia(spreadsheetId) {
 
 
 
-module.exports = { scanear, leerDia };
+async function leerDia_v2(spreadsheetId) {
+    try {
+
+        const client = await obtenerCliente();
+        const googleSheets = google.sheets({ version: "v4", auth: client });
+        console.log('Obtenemos el google sheet')
+
+        const getRow = await googleSheets.spreadsheets.values.get({
+            auth: client,
+            spreadsheetId,
+            range: "Principal!B6:G",
+        });
+
+        console.log('Obtuvimos de Principal')
+
+        const getRowCurrently = await googleSheets.spreadsheets.values.get({
+            auth: client,
+            spreadsheetId,
+            range: "Asistencia!A2:F",
+        });
+
+        console.log('Obtuvimos la Asistencia')
+        const filaActual = getRowCurrently.data.values;
+
+        const fila = getRow.data.values;
+        console.log('Nos preparamos para cruzar')
+
+        // Llamar a la función y mostrar el resultado
+        const resultado = cruzarInformacion(filaActual, fila);
+        console.log('ya cruzamos')
+        console.log('-------RESULTADO--------')
+        console.log(resultado);
+
+
+
+
+
+        return { code: '0', data: resultado }
+
+
+    } catch (error) {
+        console.log('ERROR --->' + error)
+    }
+
+
+}
+
+
+function cruzarInformacion(arr1, arr2) {
+    if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
+        // Si alguno no es array, simplemente devuelve arr2 tal cual
+        return arr2;
+    }
+
+    const valoresArr1 = new Set(arr1.map(subArray => subArray[0]));
+
+    return arr2.map(subArray => {
+        const segundoCampo = subArray[1];
+        const existe = valoresArr1.has(segundoCampo);
+        return [...subArray, existe];
+    });
+}
+
+
+module.exports = { scanear, leerDia, leerDia_v2 };

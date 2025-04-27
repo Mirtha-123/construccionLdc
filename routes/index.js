@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { obtenerDatos, agregarDatos } = require('../services/qr_service');
 const { borrarRegistros } = require('../services/sheets');
-const { scanear, leerDia } = require('../services/flutter');
+const { scanear, leerDia, leerDia_v2 } = require('../services/flutter');
 require('dotenv').config();
 
 const { subirImagen } = require('../services/firebase')
@@ -154,6 +154,19 @@ router.get("/day", async (req, res) => {
     try {
         console.log('peticion del dia')
         const respuesta = await leerDia(spreadsheetId);
+        console.log('---------RESP:', respuesta)
+        res.send(respuesta)
+    } catch (error) {
+        console.error('Error /day:', error);
+        res.status(500).send('Error al procesar la solicitud');
+    }
+});
+
+
+router.get("/dayV2", async (req, res) => {
+    try {
+        console.log('peticion del dia')
+        const respuesta = await leerDia_v2(spreadsheetId);
         console.log('---------RESP:', respuesta)
         res.send(respuesta)
     } catch (error) {
